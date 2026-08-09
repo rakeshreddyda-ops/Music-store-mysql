@@ -1,77 +1,92 @@
-# 🎵 Music Store Database — MySQL
+# 🎵 Music Store Analytics — SQL Business Insights
 
-A relational database project analyzing a music store's operations using SQL — covering sales, customer behavior, artist performance, and genre trends across 11 real business queries.
+> Analyzes music store sales data using SQL to uncover customer behavior, top-performing artists, and revenue drivers for business decision-making.
 
 ---
 
-## 📁 Folder Structure
+## 📌 Problem Statement
+
+Music store businesses generate large volumes of transactional data but often lack clear insights into customer purchasing behavior, top-performing artists, and revenue trends. Without structured analysis, it becomes difficult to make data-driven decisions on marketing, inventory, and regional strategy.
+
+---
+
+## 💡 Solution
+
+Built a relational SQL-based analysis system to answer key business questions using structured queries. The project extracts actionable insights such as top customers, best-selling genres, and country-wise revenue trends using advanced SQL techniques.
+
+---
+
+## 🛠️ Tech Stack
+
+* **SQL (MySQL / PostgreSQL)** — Data querying & analysis
+* **MySQL Workbench** — Query execution & schema design
+* **Relational Database Design** — Structured data modeling
+
+---
+
+## 🚀 Key Features
+
+* Solved **11 real-world business problems** using SQL
+* Used **complex JOINs (up to 5 tables)** for deep data analysis
+* Implemented **window functions (DENSE_RANK)** for ranking insights
+* Performed **customer segmentation & revenue analysis**
+* Identified **top genres, artists, and high-value customers**
+* Built **scalable query logic with subqueries & aggregations**
+
+---
+
+## 📊 Results (Key Insights)
+
+* Identified **top spending customers across countries**
+* Discovered **highest revenue-generating cities and regions**
+* Found **most popular genre (Rock) and top-performing artists**
+* Revealed **customer purchase patterns and retention signals**
+* Ranked **top genres per country using window functions**
+
+---
+
+## 💼 Business Impact ⭐
+
+* Helps businesses **identify high-value customers** for targeted marketing
+* Enables **data-driven inventory decisions** (popular genres/artists)
+* Supports **regional expansion strategy** using country-level insights
+* Improves **revenue optimization** through customer behavior analysis
+* Provides a foundation for **BI dashboards and reporting systems**
+
+---
+
+## 📁 Project Structure
 
 ```
 music-store-mysql/
 │
 ├── queries/
-│   └── Music_Store_Project.sql   # All 11 SQL queries with logic comments
+│   └── Music_Store_Project.sql
 │
 ├── erd/
-│   └── music_store_erd.png       # Entity Relationship Diagram (add yours here)
+│   └── music_store_erd.png
 │
 └── README.md
 ```
 
 ---
 
-## 📌 Project Overview
-
-This project uses SQL to answer real business questions from a music store database. It covers employee hierarchy, customer spending, invoice analysis, genre popularity, and country-level insights — using multi-table JOINs, subqueries, aggregations, and window functions.
-
----
-
-## 🛠️ Tech Stack
-
-| Tool | Purpose |
-|------|---------|
-| MySQL / PostgreSQL | Relational database engine |
-| MySQL Workbench | Query execution & schema design |
-| SQL | Data querying & analysis |
-
----
-
 ## 🗃️ Database Schema
 
-Key tables used across queries:
+Key tables used:
 
-| Table | Description |
-|-------|-------------|
-| `employee` | Staff records with job levels/hierarchy |
-| `customer` | Customer details |
-| `invoice` | Purchase invoices with billing country/city |
-| `invoiceline` | Line items per invoice (track, price, qty) |
-| `track` | Song details with genre and album reference |
-| `album` | Albums linked to artists |
-| `artist` | Artist names |
-| `genre` | Music genre classification |
+* `customer` — Customer information
+* `invoice` — Purchase transactions
+* `invoiceline` — Detailed sales data
+* `track` — Song-level data
+* `genre` — Music categories
+* `artist` — Artist information
+* `album` — Album mapping
+* `employee` — Organizational hierarchy
 
 ---
 
-## 🔍 Business Questions Answered (11 Queries)
-
-| # | Question | Technique Used |
-|---|----------|----------------|
-| 1 | Who is the senior-most employee? | `ORDER BY levels DESC LIMIT 1` |
-| 2 | Which country has the most invoices? | `COUNT + GROUP BY + ORDER BY` |
-| 3 | Top 3 countries by total invoice value | `SUM + GROUP BY + LIMIT 3` |
-| 4 | Best city by total invoice revenue | `SUM + GROUP BY + LIMIT 1` |
-| 5 | Customer who spent the most money | Multi-table JOIN + Subquery |
-| 6 | Rock music listeners (name, email) | 5-table JOIN + WHERE genre filter |
-| 7 | Top 10 Rock artists by track count | JOIN + GROUP BY + LIMIT 10 |
-| 8 | Tracks longer than average duration | Scalar subquery in WHERE clause |
-| 9 | Amount spent per customer per artist | Multi-table JOIN + GROUP BY |
-| 10 | Top genre per country | `DENSE_RANK()` window function |
-| 11 | Top spending customer per country | `DENSE_RANK()` window function |
-
----
-
-## 📊 Sample Query — Top Spending Customer per Country
+## 📊 Sample Query — Top Customer per Country
 
 ```sql
 SELECT customer_id, first_name, last_name, billing_country
@@ -92,15 +107,29 @@ WHERE rnk = 1;
 
 ---
 
-## 🚀 How to Run
+## 📸 Screenshots 
 
-1. Install [MySQL](https://dev.mysql.com/downloads/) or [PostgreSQL](https://www.postgresql.org/download/)
-2. Import the Music Store database (schema + data)
-3. Open `queries/Music_Store_Project.sql`
-4. Execute queries one by one to explore the results
+* ER Diagram
+  <img width="1315" height="731" alt="image" src="https://github.com/user-attachments/assets/319d4df0-6464-41df-b0a9-1ac40b1e2123" />
+
+* Query Results
+  <img width="1949" height="855" alt="image" src="https://github.com/user-attachments/assets/dbb9eabd-3977-4dd4-a8a2-dc6faf21be31" />
+  <img width="2000" height="842" alt="image" src="https://github.com/user-attachments/assets/809d0888-6669-430e-bdb4-7a7ed4c7477e" />
+  <img width="2000" height="847" alt="image" src="https://github.com/user-attachments/assets/d6a636a4-33fb-4a4b-a9ba-3f9ca8611e1b" />
+  <img width="2000" height="873" alt="image" src="https://github.com/user-attachments/assets/b19f635b-e86e-452f-ade8-71434886a302" />
+
+
+---
+
+## ⚙️ How to Run
+
+1. Install MySQL or PostgreSQL
+2. Import the Music Store dataset
+3. Open SQL file from `/queries`
+4. Execute queries to explore insights
 
 ---
 
 ## 📄 License
 
-This project is for educational and portfolio purposes.
+This project is intended for portfolio and educational use.
